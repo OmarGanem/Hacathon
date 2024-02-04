@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotorData - Car Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+  <title>MotorData - Car Tracking</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .imagen {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        #options,
+        #vin-option,
+        #qr-option {
+            display: none;
+        
+        }
+        #message-container {
+      display: none; /* Oculta el contenedor por defecto */
+      margin-top: 10px;
+    }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MotorData - Car Tracking</h1>
+        <img class="imagen" src="../images/Logo.jpg" alt="Logo">
+        <form id="login-form">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="options">
+            <h2>Choose an Option</h2>
+            <button id="vin-button">Track by VIN</button>
+            <button id="qr-button">Track by QR</button>
+        </div>
+        <div id="vin-option">
+            <h2>Track by VIN</h2>
+            <input type="text" id="vin-input" placeholder="Enter VIN">
+            <button id="vin-submit">Submit</button>
+            <div id="message-container" style="display:none;">
+                <span id="car-info"></span>
+                <button id="close-btn">&times;</button>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div id="qr-option">
+            <h2>Track by QR</h2>
+            <!-- Add your QR code scanning functionality here -->
+        </div>
+        
+  </div>
+
+    <script>
+        // Add your JavaScript code here
+        
+        const loginForm = document.getElementById('login-form');
+        const optionsDiv = document.getElementById('options');
+        const vinButton = document.getElementById('vin-button');
+        const qrButton = document.getElementById('qr-button');
+        const vinOption = document.getElementById('vin-option');
+        const qrOption = document.getElementById('qr-option');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            optionsDiv.style.display = 'block';
+        });
+        
+        vinButton.addEventListener('click', () => {
+            vinOption.style.display = 'block';
+            qrOption.style.display = 'none';
+        });
+
+        qrButton.addEventListener('click', () => {
+            qrOption.style.display = 'block';
+            vinOption.style.display = 'none';
+        });
+        const vinSubmitButton = document.getElementById('vin-submit');
+const carInfoSpan = document.getElementById('car-info');
+
+vinSubmitButton.addEventListener('click', () => {
+  // Obtener el valor del VIN introducido
+  const vin = document.getElementById('vin-input').value;
+
+  // Simular un proceso de obtención de la marca del coche
+  // (en la práctica, esto se haría a través de una API o base de datos)
+  const carBrand = 'Toyota'; // Suponiendo que la marca es Toyota
+  const carModel = 'Corolla'; // Suponiendo que el modelo es Corolla
+  const carYear = '2020'; // Suponiendo que el año es 2020
+  const carPlate = '1234ABC'; // Suponiendo que la placa es 1234ABC
+
+  // Crear una lista con la información del coche
+  const carInfoList = document.createElement('ul');
+  carInfoList.innerHTML = `
+    <li>Car Brand: ${carBrand}</li>
+    <li>Car Model: ${carModel}</li>
+    <li>Car Year: ${carYear}</li>
+    <li>Car Plate: ${carPlate}</li>
+  `;
+
+  // Mostrar la lista
+  carInfoSpan.appendChild(carInfoList);
+  document.getElementById('message-container').style.display = 'block';
+});
+        // Add your additional JavaScript code here
+        
+    </script>
+</body>
+</html>
